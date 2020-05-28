@@ -2,6 +2,7 @@ package com.codecool.videoservice;
 
 import com.codecool.videoservice.Model.Video;
 import com.codecool.videoservice.Repository.VideoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @SpringBootApplication
 @EnableSwagger2
+@Slf4j
 public class VideoServiceApplication {
 
     @Autowired
@@ -56,6 +58,7 @@ public class VideoServiceApplication {
                 .build();
         List<Video> videos = Arrays.asList(video1, video2, video3, video4);
         videoRepository.saveAll(videos);
+        log.info("Sample videos created");
 
     }
 }
