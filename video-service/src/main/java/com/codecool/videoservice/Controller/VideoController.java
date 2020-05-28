@@ -26,5 +26,5 @@ public class VideoController {
     }
 
     @GetMapping("/recommendations")
-    public RecommendationResult getRecommendations(){return recommendationCaller.getRecommendation("/all");}
+    public RecommendationResult[] getRecommendations(){return recommendationCaller.getRecommendation("/all");}
 }
