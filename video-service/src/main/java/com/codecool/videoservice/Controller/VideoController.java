@@ -8,10 +8,7 @@ import com.codecool.videoservice.Service.RecommendationCaller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/videos")
@@ -46,5 +43,10 @@ public class VideoController {
         video.setUrl(requestData.getUrl());
         videoRepository.save(video);
         recommendationCaller.updateRecommendation(requestData.getRecommendations());
+    }
+
+    @PostMapping("/add")
+    public void addRecommendation(@RequestBody RecommendationResult recommendation){
+        recommendationCaller.updateRecommendation(Collections.singletonList(recommendation));
     }
 }
