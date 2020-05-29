@@ -7,5 +7,11 @@
       <jdbc-driver>org.h2.Driver</jdbc-driver>
       <jdbc-url>jdbc:h2:mem:videodb</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="recommendationdb" uuid="06d7523c-db92-4a9d-9ccc-cce1c1126901">
+      <driver-ref>h2.unified</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:mem:recommendationdb</jdbc-url>
+    </data-source>
   </component>
 </project>
