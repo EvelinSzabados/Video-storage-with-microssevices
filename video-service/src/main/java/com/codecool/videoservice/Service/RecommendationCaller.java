@@ -19,11 +19,12 @@ public class RecommendationCaller {
     @Value("${recommendationservice.url}")
     public String baseUrl;
 
-    public RecommendationResult[] getRecommendation(String route){
-        ResponseEntity<RecommendationResult[]> response =
+    public RecommendationResult getRecommendation(String route){
+        ResponseEntity<RecommendationResult> response =
                 restTemplate.getForEntity(
                         baseUrl+route,
-                        RecommendationResult[].class);
+                        RecommendationResult.class);
         return response.getBody();
     }
+
 }
