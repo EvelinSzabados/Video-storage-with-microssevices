@@ -45,5 +45,6 @@ public class VideoController {
         video.setName(requestData.getName());
         video.setUrl(requestData.getUrl());
         videoRepository.save(video);
+        recommendationCaller.updateRecommendation(requestData.getRecommendations());
     }
 }
