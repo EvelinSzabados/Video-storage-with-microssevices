@@ -1,5 +1,6 @@
 package com.codecool.videoservice.Controller;
 
+import com.codecool.videoservice.Model.AllVideoData;
 import com.codecool.videoservice.Model.RecommendationResult;
 import com.codecool.videoservice.Model.Video;
 import com.codecool.videoservice.Repository.VideoRepository;
@@ -27,17 +28,22 @@ public class VideoController {
     }
 
     @GetMapping("/{videoId}")
-    public Map<String,Object> getVideoById(@PathVariable Long videoId){
+    public AllVideoData getVideoById(@PathVariable Long videoId){
         RecommendationResult[] recommendation = recommendationCaller.getRecommendation("/" + videoId);
         Video video = videoRepository.findById(videoId).get();
-        Map<String,Object> response = new HashMap<>();
-        response.put("Video",video);
-        response.put("Recommendation",recommendation);
-        return response;
+        return AllVideoData.builder()
+                .id(video.getId())
+                .name(video.getName())
+                .url(video.getUrl())
+                .recommendations(Arrays.asList(recommendation))
+                .build();
     }
 
-//    @PostMapping("/{videoId}")
-//    public void updateVideoData(@PathVariable Long videoId){
-//        Video video = videoRepository.getOne(videoId);
-//    }
+    @PutMapping("/{videoId}")
+    public void updateVideoData(@PathVariable Long videoId,@RequestBody AllVideoData requestData){
+        Video video = videoRepository.getOne(videoId);
+        video.setName(requestData.getName());
+        video.setUrl(requestData.getUrl());
+        videoRepository.save(video);
+    }
 }
