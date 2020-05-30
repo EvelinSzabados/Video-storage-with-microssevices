@@ -16,3 +16,6 @@ This assignment is about writing a software that is a network of loosely coupled
   - able to retrieve all recommendations for a videoId (GET)
   - able to save a new recommendation for a videoId
   - extra: update existing records
+  
+## Front end application
+https://github.com/EvelinSzabados/video-storage-with-microservices-frontend
